@@ -20,6 +20,6 @@ package intro;
 
 public class HelloMain {
     public static void main(String[] args) {
-        System.out.println("Hello Intellij");
+        System.out.println("Test git");
     }
 }
