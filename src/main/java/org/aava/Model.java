@@ -16,7 +16,7 @@
  ********************************************
  */
 
-package intro;
+package org.aava;
 
 public class Model {
 }

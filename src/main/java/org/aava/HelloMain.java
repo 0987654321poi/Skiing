@@ -4,19 +4,22 @@
  * Instructor: Prof. Brian King
  *
  * Name: Alejandro Vargas Altamirano
- * Date: 12/28/2022
- * Time: 11:24 AM
+ * Date: 9/8/2022
+ * Time: 1:14 PM
  *
  * Project:MyWork
  * Package:intro
- * Class: Controller
+ * Class: HelloMain
  *
  * Description:
  *
  ********************************************
  */
 
-package intro;
+package org.aava;
 
-public class Controller {
+public class HelloMain {
+    public static void main(String[] args) {
+        System.out.println("Test git");
+    }
 }

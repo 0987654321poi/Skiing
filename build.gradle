@@ -1,5 +1,9 @@
 plugins {
+    id 'application'
     id 'java'
+    id 'idea'
+    id 'org.javamodularity.moduleplugin' version '1.8.12'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
 group 'org.aava'
@@ -7,6 +11,10 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+
+run{
+    standardInput = System.in
 }
 
 javafx{
@@ -21,4 +29,16 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+application {
+    mainModule = "MyWork"
+    mainClassName = "org.aava.Main"
+
+    if (project.hasProperty("mainClass")) {
+        getMainClass().set(project.getProperty("mainClass"))
+    }
+    else {
+        getMainClass().set(mainClassName)
+    }
 }
