@@ -28,7 +28,7 @@ public class Main extends Application {
         this.theController.setModel(theModel);
 
         primaryStage.setTitle("Skiing");
-        Scene scene = new Scene(root, 600, 700);
+        Scene scene = new Scene(root, 600, 400);
         scene.getRoot().requestFocus();
         primaryStage.setScene(scene);
         primaryStage.show();

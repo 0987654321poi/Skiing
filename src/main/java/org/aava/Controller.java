@@ -18,27 +18,56 @@
 
 package org.aava;
 
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.input.*;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
-import java.awt.*;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 
-public class Controller {
+public class Controller implements Initializable {
     private Model theModel;
+
+    AnimationTimer gameLoop;
+
+    private int time = 0;
 
     @FXML
     private Rectangle skier;
 
     @FXML
-    private AnchorPane pane;
+    private Pane pane;
+
+    @FXML
+    private Circle l1;
+
+    @FXML
+    private Circle r1;
+
 
     public void setModel(Model model){
         this.theModel = model;
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        pane.getChildren().get(1).setLayoutY(500);
+        gameLoop = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                update();
+            }
+        };
+
+        gameLoop.start();
+    }
 
     @FXML
     public void pressed(KeyEvent event) {
@@ -50,10 +79,31 @@ public class Controller {
 
     public void left(){
         if(skier.getX() > -284)
-            skier.setX(skier.getX()-4);
+            skier.setX(skier.getX()-5*(time/1000.0+1));
     }
     public void right(){
         if (skier.getX() < 284)
-            skier.setX(skier.getX()+4);
+            skier.setX(skier.getX()+5*(time/1000.0+1));
+    }
+
+    private void update(){
+        time++;
+        List<Node> temp = pane.getChildren();
+
+        for(Node node: temp){
+            if(node == skier)
+                continue;
+            if(node.getLayoutY() >0){
+                node.setLayoutY(node.getLayoutY()-1*(time/1000.0)-1);
+            }
+            else{
+                node.setLayoutY(400);
+                if(node == l1)
+                    node.setLayoutX(150*Math.random()+100);
+                else
+                    node.setLayoutX(150*Math.random()+300);
+            }
+        }
+
     }
 }
