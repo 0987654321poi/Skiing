@@ -29,6 +29,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("Skiing");
         Scene scene = new Scene(root, 600, 700);
+        scene.getRoot().requestFocus();
         primaryStage.setScene(scene);
         primaryStage.show();
     }
