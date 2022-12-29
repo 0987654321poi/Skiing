@@ -79,11 +79,11 @@ public class Controller implements Initializable {
 
     public void left(){
         if(skier.getX() > -284)
-            skier.setX(skier.getX()-5*(time/1000.0+1));
+            skier.setX(skier.getX()-5*(time/4000.0+1));
     }
     public void right(){
         if (skier.getX() < 284)
-            skier.setX(skier.getX()+5*(time/1000.0+1));
+            skier.setX(skier.getX()+5*(time/4000.0+1));
     }
 
     private void update(){
@@ -94,7 +94,7 @@ public class Controller implements Initializable {
             if(node == skier)
                 continue;
             if(node.getLayoutY() >0){
-                node.setLayoutY(node.getLayoutY()-1*(time/1000.0)-1);
+                node.setLayoutY(node.getLayoutY()-1*(time/5000.0)-1);
             }
             else{
                 node.setLayoutY(400);
