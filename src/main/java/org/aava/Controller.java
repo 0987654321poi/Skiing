@@ -19,4 +19,8 @@
 package org.aava;
 
 public class Controller {
+    private Model theModel;
+    public void setModel(Model model){
+        this.theModel = model;
+    }
 }
