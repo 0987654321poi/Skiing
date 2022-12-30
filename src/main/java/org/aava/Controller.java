@@ -52,6 +52,7 @@ public class Controller implements Initializable {
      */
     private int time = 0;
 
+    private Object prev;
     /**
      * Boolean property determining if the player has lost yet
      */
@@ -126,6 +127,7 @@ public class Controller implements Initializable {
         skier.setImage(new Image("skier.png"));
         time = 0;
         lost = false;
+        prev = r1;
     }
 
     /**
@@ -134,9 +136,9 @@ public class Controller implements Initializable {
      */
     @FXML
     public void pressed(KeyEvent event) {
-        if(event.getCode() == KeyCode.A)
+        if(event.getCode() == KeyCode.S)
             left();
-        if (event.getCode() == KeyCode.D)
+        if (event.getCode() == KeyCode.F)
             right();
     }
 
@@ -203,12 +205,13 @@ public class Controller implements Initializable {
 
             double skiX = pane.getChildren().get(
                     pane.getChildren().indexOf(skier)).getLayoutX()+skier.getX();
-            if(node.getLayoutY() - skiY < 1.25 && node.getLayoutY() - skiY > 0){
+            if(node.getLayoutY() - skiY <  4 && node.getLayoutY() - skiY > 0 && prev != node){
                 if ((node == l1 && skiX > node.getLayoutX()) || (node == r1 && skiX < node.getLayoutX()))
                     lost = true;
                 else {
                     int currScore = Integer.parseInt(score.getText());
                     score.setText(String.valueOf(currScore + 1));
+                    prev = node;
                 }
             }
         }
