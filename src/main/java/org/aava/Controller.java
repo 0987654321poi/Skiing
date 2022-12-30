@@ -66,6 +66,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         pane.getChildren().get(1).setLayoutY(500);
+        pane.getChildren().get(0).setLayoutY(250);
         gameLoop = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -112,7 +113,7 @@ public class Controller implements Initializable {
             if(node == skier)
                 continue;
             if(node.getLayoutY() >0){
-                node.setLayoutY(node.getLayoutY()-1*(time/5000.0)-1);
+                node.setLayoutY(node.getLayoutY()-2*(time/5000.0)-1);
             }
             else{
                 node.setLayoutY(500);
@@ -126,7 +127,7 @@ public class Controller implements Initializable {
 
             double skiX = pane.getChildren().get(
                     pane.getChildren().indexOf(skier)).getLayoutX()+skier.getX();
-            if(node.getLayoutY() - skiY < 1 && node.getLayoutY() - skiY > 0){
+            if(node.getLayoutY() - skiY < 1.25 && node.getLayoutY() - skiY > 0){
                 if ((node == l1 && skiX > node.getLayoutX()) || (node == r1 && skiX < node.getLayoutX()))
                     lost = true;
                 else {
