@@ -4,14 +4,14 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-
 
 <BorderPane id="border" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pressed" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: azure;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aava.Controller">
    <top>
@@ -38,7 +38,7 @@
                         <Font name="Berlin Sans FB Demi Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label fx:id="score" text="00">
+                  <Label fx:id="score" text="0">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="36.0" />
                      </font>
@@ -51,9 +51,12 @@
    <center>
       <Pane fx:id="pane" prefHeight="376.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fx:id="skier" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="35.0" layoutX="284.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="35.0" />
             <Circle fx:id="l1" fill="#ff1f1f" layoutX="178.0" layoutY="185.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="r1" fill="DODGERBLUE" layoutX="423.0" layoutY="283.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fx:id="skier" fitHeight="56.0" fitWidth="56.0" layoutX="272.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="skier.png" />
+               </image></ImageView>
          </children>
       </Pane>
    </center>

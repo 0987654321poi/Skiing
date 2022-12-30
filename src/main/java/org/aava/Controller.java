@@ -23,10 +23,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.util.List;
@@ -46,7 +47,7 @@ public class Controller implements Initializable {
     private Label score;
 
     @FXML
-    private Rectangle skier;
+    private ImageView skier;
 
     @FXML
     private Pane pane;
@@ -84,12 +85,20 @@ public class Controller implements Initializable {
     }
 
     public void left(){
+        if (lost)
+            return;
         if(skier.getX() > -284)
             skier.setX(skier.getX()-5*(time/4000.0+1));
+        Image skiMan = new Image("leftSkier.png");
+        skier.setImage(skiMan);
     }
     public void right(){
+        if (lost)
+            return;
         if (skier.getX() < 284)
-            skier.setX(skier.getX()+5*(time/4000.0+1));
+            skier.setX(skier.getX()+6*(time/4000.0+1));
+        Image skiMan = new Image("skier.png");
+        skier.setImage(skiMan);
     }
 
     private void update(){
@@ -106,7 +115,7 @@ public class Controller implements Initializable {
                 node.setLayoutY(node.getLayoutY()-1*(time/5000.0)-1);
             }
             else{
-                node.setLayoutY(400);
+                node.setLayoutY(500);
                 if(node == l1)
                     node.setLayoutX(150*Math.random()+100);
                 else
