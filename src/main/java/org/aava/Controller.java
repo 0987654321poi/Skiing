@@ -19,6 +19,8 @@
 package org.aava;
 
 import javafx.animation.AnimationTimer;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -106,8 +108,7 @@ public class Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        pane.getChildren().get(1).setLayoutY(500);
-        pane.getChildren().get(0).setLayoutY(250);
+        startGame();
         gameLoop = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -118,17 +119,36 @@ public class Controller implements Initializable {
         gameLoop.start();
     }
 
+    private void startGame() {
+        pane.getChildren().get(1).setLayoutY(500);
+        pane.getChildren().get(0).setLayoutY(250);
+        skier.setX(0);
+        skier.setImage(new Image("skier.png"));
+        time = 0;
+        lost = false;
+    }
+
     /**
      * Event handler for when the player tries to control the skier with the arrow keys
      * @param event
      */
     @FXML
     public void pressed(KeyEvent event) {
-        if(event.getCode() == KeyCode.LEFT)
+        if(event.getCode() == KeyCode.A)
             left();
-        if (event.getCode() == KeyCode.RIGHT)
+        if (event.getCode() == KeyCode.D)
             right();
     }
+
+    @FXML
+    public void restart(MouseEvent mouseEvent) {
+        startGame();
+        score.setText("0");
+    }
+
+
+
+
 
     /**
      * Holds the logic for if the player hits the left arrow
