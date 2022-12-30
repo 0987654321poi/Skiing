@@ -22,6 +22,7 @@ import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.input.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -38,6 +39,11 @@ public class Controller implements Initializable {
     AnimationTimer gameLoop;
 
     private int time = 0;
+
+    private boolean lost = false;
+
+    @FXML
+    private Label score;
 
     @FXML
     private Rectangle skier;
@@ -90,6 +96,9 @@ public class Controller implements Initializable {
         time++;
         List<Node> temp = pane.getChildren();
 
+        if (lost){
+            return;
+        }
         for(Node node: temp){
             if(node == skier)
                 continue;
@@ -102,6 +111,19 @@ public class Controller implements Initializable {
                     node.setLayoutX(150*Math.random()+100);
                 else
                     node.setLayoutX(150*Math.random()+300);
+            }
+            double skiY = pane.getChildren().get(
+            pane.getChildren().indexOf(skier)).getLayoutY();
+
+            double skiX = pane.getChildren().get(
+                    pane.getChildren().indexOf(skier)).getLayoutX()+skier.getX();
+            if(node.getLayoutY() - skiY < 1 && node.getLayoutY() - skiY > 0){
+                if ((node == l1 && skiX > node.getLayoutX()) || (node == r1 && skiX < node.getLayoutX()))
+                    lost = true;
+                else {
+                    int currScore = Integer.parseInt(score.getText());
+                    score.setText(String.valueOf(currScore + 1));
+                }
             }
         }
 

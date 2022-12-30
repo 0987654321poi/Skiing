@@ -38,7 +38,7 @@
                         <Font name="Berlin Sans FB Demi Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label text="00">
+                  <Label fx:id="score" text="00">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="36.0" />
                      </font>
@@ -51,8 +51,8 @@
    <center>
       <Pane fx:id="pane" prefHeight="376.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fx:id="skier" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="32.0" layoutX="284.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
-            <Circle fx:id="l1" fill="#ff1f1f" layoutX="175.0" layoutY="10.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+            <Rectangle fx:id="skier" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="35.0" layoutX="284.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="35.0" />
+            <Circle fx:id="l1" fill="#ff1f1f" layoutX="178.0" layoutY="185.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="r1" fill="DODGERBLUE" layoutX="423.0" layoutY="283.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Pane>
