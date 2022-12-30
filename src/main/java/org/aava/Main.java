@@ -31,6 +31,7 @@ public class Main extends Application {
         Scene scene = new Scene(root, 600, 400);
         scene.getRoot().requestFocus();
         primaryStage.setScene(scene);
+
         primaryStage.show();
     }
 }
