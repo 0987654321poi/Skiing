@@ -88,6 +88,9 @@ public class Controller implements Initializable {
     @FXML
     private Circle r1;
 
+    @FXML
+    private Label loseLabel;
+
 
     /**
      * Attaches the model to our controller(agian may not be necessary)
@@ -128,6 +131,7 @@ public class Controller implements Initializable {
         time = 0;
         lost = false;
         prev = r1;
+        loseLabel.setText("");
     }
 
     /**
@@ -188,7 +192,7 @@ public class Controller implements Initializable {
             return;
         }
         for(Node node: temp){
-            if(node == skier)
+            if(node == skier || node == loseLabel)
                 continue;
             if(node.getLayoutY() >0){
                 node.setLayoutY(node.getLayoutY()-2*(time/5000.0)-1);
@@ -205,9 +209,11 @@ public class Controller implements Initializable {
 
             double skiX = pane.getChildren().get(
                     pane.getChildren().indexOf(skier)).getLayoutX()+skier.getX();
-            if(node.getLayoutY() - skiY <  4 && node.getLayoutY() - skiY > 0 && prev != node){
-                if ((node == l1 && skiX > node.getLayoutX()) || (node == r1 && skiX < node.getLayoutX()))
+            if(node.getLayoutY() - skiY <  4 && node.getLayoutY() - skiY > 0 && prev != node) {
+                if ((node == l1 && skiX > node.getLayoutX()) || (node == r1 && skiX < node.getLayoutX())){
                     lost = true;
+                    loseLabel.setText("YOU LOSE :(");
+                }
                 else {
                     int currScore = Integer.parseInt(score.getText());
                     score.setText(String.valueOf(currScore + 1));
