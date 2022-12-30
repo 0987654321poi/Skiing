@@ -47,7 +47,7 @@
             <Circle fx:id="r1" fill="DODGERBLUE" layoutX="423.0" layoutY="283.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
             <ImageView fx:id="skier" fitHeight="56.0" fitWidth="56.0" layoutX="272.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@/skier.png" />
+                  <Image url="@/leftSkier.png" />
                </image></ImageView>
          </children>
       </Pane>

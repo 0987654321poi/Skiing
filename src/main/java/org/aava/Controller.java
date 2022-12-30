@@ -124,7 +124,7 @@ public class Controller implements Initializable {
         pane.getChildren().get(1).setLayoutY(500);
         pane.getChildren().get(0).setLayoutY(250);
         skier.setX(0);
-        skier.setImage(new Image("skier.png"));
+        skier.setImage(new Image("leftSkier.png"));
         time = 0;
         lost = false;
         prev = r1;
@@ -159,7 +159,7 @@ public class Controller implements Initializable {
         if (lost)
             return;
         if(skier.getX() > -284)
-            skier.setX(skier.getX()-5*(time/4000.0+1));
+            skier.setX(skier.getX()-5*(time/5000.0+1));
         Image skiMan = new Image("leftSkier.png");
         skier.setImage(skiMan);
     }
@@ -171,8 +171,8 @@ public class Controller implements Initializable {
         if (lost)
             return;
         if (skier.getX() < 284)
-            skier.setX(skier.getX()+6*(time/4000.0+1));
-        Image skiMan = new Image("skier.png");
+            skier.setX(skier.getX()+6*(time/5000.0+1));
+        Image skiMan = new Image("rightSkier.png");
         skier.setImage(skiMan);
     }
 
