@@ -21,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/skiing.fxml"));
+        loader.setLocation(getClass().getResource("/homePage.fxml"));
         Parent root = loader.load();
 
         this.theController = loader.getController();

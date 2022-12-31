@@ -100,6 +100,15 @@ public class Controller implements Initializable {
     @FXML
     private Button home;
 
+    @FXML
+    private Button play;
+
+    @FXML
+    private Button back;
+
+    @FXML
+    private Button instructions;
+
 
     /**
      * Attaches the model to our controller(agian may not be necessary)
@@ -242,6 +251,39 @@ public class Controller implements Initializable {
         Parent root = loader.load();
 
         Stage stage = (Stage) home.getScene().getWindow();
+
+        stage.setScene(new Scene(root));
+    }
+
+    @FXML
+    public void back(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/homePage.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) back.getScene().getWindow();
+
+        stage.setScene(new Scene(root));
+    }
+
+    @FXML
+    public void instructions(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Instructions.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) instructions.getScene().getWindow();
+
+        stage.setScene(new Scene(root));
+    }
+
+    @FXML
+    public void play(ActionEvent actionEvent) throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/skiing.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) play.getScene().getWindow();
 
         stage.setScene(new Scene(root));
     }
