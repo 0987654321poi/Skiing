@@ -22,15 +22,21 @@ import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -91,6 +97,9 @@ public class Controller implements Initializable {
     @FXML
     private Label loseLabel;
 
+    @FXML
+    private Button home;
+
 
     /**
      * Attaches the model to our controller(agian may not be necessary)
@@ -112,15 +121,17 @@ public class Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        startGame();
-        gameLoop = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                update();
-            }
-        };
+        if (this.pane != null) {
+            startGame();
+            gameLoop = new AnimationTimer() {
+                @Override
+                public void handle(long now) {
+                    update();
+                }
+            };
 
-        gameLoop.start();
+            gameLoop.start();
+        }
     }
 
     private void startGame() {
@@ -159,7 +170,7 @@ public class Controller implements Initializable {
     /**
      * Holds the logic for if the player hits the left arrow
      */
-    public void left(){
+    public void left() {
         if (lost)
             return;
         if(skier.getX() > -284)
@@ -209,12 +220,12 @@ public class Controller implements Initializable {
 
             double skiX = pane.getChildren().get(
                     pane.getChildren().indexOf(skier)).getLayoutX()+skier.getX();
-            if(node.getLayoutY() - skiY <  4 && node.getLayoutY() - skiY > 0 && prev != node) {
-                if ((node == l1 && skiX > node.getLayoutX()) || (node == r1 && skiX < node.getLayoutX())){
+            if(node.getLayoutY() - skiY <  50 && node.getLayoutY() - skiY > -10) {
+                if ((node == l1 && skiX+60 > node.getLayoutX()) || (node == r1 && skiX-10 < node.getLayoutX())){
                     lost = true;
                     loseLabel.setText("YOU LOSE :(");
                 }
-                else {
+                else if (prev != node){
                     int currScore = Integer.parseInt(score.getText());
                     score.setText(String.valueOf(currScore + 1));
                     prev = node;
@@ -222,5 +233,16 @@ public class Controller implements Initializable {
             }
         }
 
+    }
+
+    @FXML
+    public void goHome(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/homePage.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) home.getScene().getWindow();
+
+        stage.setScene(new Scene(root));
     }
 }
