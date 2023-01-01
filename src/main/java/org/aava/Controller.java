@@ -183,7 +183,7 @@ public class Controller implements Initializable {
         if (lost)
             return;
         if(skier.getX() > -284)
-            skier.setX(skier.getX()-5*(time/5000.0+1));
+            skier.setX(skier.getX()-5.5*(time/4500.0+1));
         Image skiMan = new Image("leftSkier.png");
         skier.setImage(skiMan);
     }
@@ -195,7 +195,7 @@ public class Controller implements Initializable {
         if (lost)
             return;
         if (skier.getX() < 284)
-            skier.setX(skier.getX()+6*(time/5000.0+1));
+            skier.setX(skier.getX()+5.5*(time/4500.0+1));
         Image skiMan = new Image("rightSkier.png");
         skier.setImage(skiMan);
     }
@@ -215,14 +215,14 @@ public class Controller implements Initializable {
             if(node == skier || node == loseLabel)
                 continue;
             if(node.getLayoutY() >0){
-                node.setLayoutY(node.getLayoutY()-2*(time/4000.0)-1);
+                node.setLayoutY(node.getLayoutY()-2*(time/5000.0)-1);
             }
             else{
                 node.setLayoutY(500);
                 if(node == l1)
-                    node.setLayoutX(150*Math.random()+100);
+                    node.setLayoutX(120*Math.random()+130);
                 else
-                    node.setLayoutX(150*Math.random()+300);
+                    node.setLayoutX(120*Math.random()+300);
             }
             double skiY = pane.getChildren().get(
             pane.getChildren().indexOf(skier)).getLayoutY();
