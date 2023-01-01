@@ -215,7 +215,7 @@ public class Controller implements Initializable {
             if(node == skier || node == loseLabel)
                 continue;
             if(node.getLayoutY() >0){
-                node.setLayoutY(node.getLayoutY()-2*(time/5000.0)-1);
+                node.setLayoutY(node.getLayoutY()-2*(time/4000.0)-1);
             }
             else{
                 node.setLayoutY(500);
